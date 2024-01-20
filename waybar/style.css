@@ -1,0 +1,235 @@
+* {
+  margin-top: 0px;
+  border: none;
+  border-radius: 8px;
+  font-family: "JetbrainsMono Nerd Font";
+  font-size: 3px;
+  min-height: 0px;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#window {
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+  color: transparent;
+  background: transparent;
+  }
+#workspaces {
+  margin-left: 12px;
+	margin-top:-2;
+  background: transparent;
+  transition: none;
+}
+
+#workspaces button box {
+	margin-top:-1;
+	margin-bottom: -3;
+}
+
+#workspaces button box label {
+font-size:12px;
+}
+
+#workspaces button {
+  transition: none;
+  color: #b5e8e0;
+  background: transparent;
+  border-radius: 6px;
+}
+
+#workspaces button.active {
+  color: #abe9b3;
+  border-bottom: 2px solid #abe9b3;
+}
+
+#workspaces button:hover {
+  transition: none;
+  box-shadow: inherit;
+  text-shadow: inherit;
+  color: #fae3b0;
+  border-color: #e8a2af;
+  color: #e8a2af;
+}
+
+#network {
+  font-size: 12px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+  color: #161320;
+  background: #bd93f9;
+}
+
+#pulseaudio {
+  font-size: 12px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+  color: #1a1826;
+  background: #fae3b0;
+}
+
+#battery {
+  font-size: 12px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+  color: #161320;
+  background: #b5e8e0;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: #161320;
+  background-color: #b5e8e0;
+}
+
+#battery.critical:not(.charging) {
+  background-color: #b5e8e0;
+  color: #161320;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    background-color: #bf616a;
+    color: #b5e8e0;
+  }
+}
+
+#backlight {
+  font-size: 12px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+  color: #161320;
+  background: #f8bd96;
+}
+#clock {
+  font-size: 12px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+  color: #161320;
+  background: #abe9b3;
+}
+
+#memory {
+  font-size: 12px;
+  /* margin-top: 6px; */
+  margin-left: 8px;
+  padding-left: 10px;
+  /* margin-bottom: 0px; */
+  padding-right: 10px;
+  /* border-radius: 10px; */
+  transition: none;
+  color: #161320;
+  background: #ddb6f2;
+}
+#cpu {
+  font-size: 12px;
+  /* margin-top: 6px; */
+  margin-left: 8px;
+  padding-left: 10px;
+  /* margin-bottom: 0px; */
+  padding-right: 10px;
+  /* border-radius: 10px; */
+  transition: none;
+  color: #161320;
+  background: #96cdfb;
+}
+
+#tray {
+  font-size: 12px;
+  /* margin-top: 6px; */
+  margin-left: 8px;
+  padding-left: 10px;
+  /* margin-bottom: 0px; */
+  padding-right: 10px;
+  /* border-radius: 10px; */
+  transition: none;
+  color: #b5e8e0;
+  /* background: #161320; */
+  background: transparent;
+}
+
+/*
+#custom-launcher {
+  font-size: 24px;
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 5px;
+  border-radius: 10px;
+  transition: none;
+  color: #89dceb;
+  background: #161320;
+}
+
+#custom-power {
+  font-size: 20px;
+  margin-top: 6px;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding-left: 10px;
+  padding-right: 5px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  color: #161320;
+  background: #f28fad;
+}
+
+#custom-wallpaper {
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  color: #161320;
+  background: #c9cbff;
+}
+
+#custom-updates {
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  color: #161320;
+  background: #e8a2af;
+}
+
+#custom-media {
+  margin-top: 6px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  color: #161320;
+  background: #f2cdcd;
+}
+*/

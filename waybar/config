@@ -1,0 +1,64 @@
+{
+	"layer": "top",
+	"modules-left": ["cpu","memory","tray"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["backlight","pulseaudio","network","battery","clock",],
+	
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": "Mute",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right":"audio --toggle",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+
+	"network": {
+		"tooltip": false,
+		"format-wifi": "  {essid} {signalStrength}%",
+		"format-ethernet": ""
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}% | {power}W",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": false,
+    },
+	"tray":{
+		"icon-size":20,
+		"spacing": 10
+	},
+  "clock": {
+      "format": "{: %I:%M %p}"
+  },
+  "cpu": {
+      "interval": 15,
+      "format": " {}%",
+      "max-length": 10
+  },
+  "memory": {
+      "interval": 30,
+      "format": " {}%",
+      "max-length": 10
+  },
+  "workspaces/workspaces": {
+      "on-click":"hyprctl dispatch workspace +1"
+  }
+}
