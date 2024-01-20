@@ -24,10 +24,10 @@ from this point you may start ricing your config simply inside hyprconfig direct
 - brillo as an brightness manager.
 - waybar as an status bar.
 - dunst as an notification daemon.
-- pipewire as an audio stack.
+- pipewire + wireplumber as an audio stack.
 - xdg-desktop-portal-hyprland as an portal.
 - polkit-kde-agent as an auth agent.
-- cliphist as an cipboard manager.
+- cliphist as an cipboard manager (wl-clipboard).
 
 ## Useful tools
 to configure qt and gtk themes
@@ -71,3 +71,17 @@ add in ~/.config/kwalletrc
 enabled=false
 first use=false
 ```
+
+## Archlinux quick dependecies install
+
+must have dependecies
+```bash
+yay -Syu --repo
+cat arch.packages | yay -S -
+```
+
+optional
+```bash
+cat optional_arch.packages  | yay -S -
+```
+
