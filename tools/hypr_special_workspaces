@@ -1,0 +1,57 @@
+#!/bin/python
+import os
+import subprocess
+import re
+
+def find_special_workspaces():
+    try:
+        hyprctlworkspaces = subprocess.check_output(["hyprctl", "workspaces"], stderr=stderr)
+    except Exception as e:
+        os.system(f"notify-send \"failed to run hyperctl workspaces {e}\"")
+        exit(1)
+
+    try:
+        hyprctlworkspaces = hyprctlworkspaces.decode("utf8")
+    except Exception as e:
+        os.system(f"notify-send \"failed to parse workspace_name {e}\"")
+        exit(1)
+    rgr = re.findall('(special:(\w+))', hyprctlworkspaces)
+
+    return rgr
+
+
+try:
+    stderr = open("/dev/null", "w")
+except Exception as e:
+    os.system(f"notify-send \"failed to open stderr\" {e}")
+    exit(1)
+
+workspaces = find_special_workspaces()
+
+wofiinput = ""
+for i in workspaces:
+    if i[1] == 'magic':
+        continue
+    wofiinput+=i[1] + '\n'
+
+try:
+    s = subprocess.check_output(["wofi", "--dmenu"], stderr=stderr, input=wofiinput.encode('utf-8'))
+except Exception as e:
+    os.system(f"notify-send \"failed to get wofi workspace name {e}\"")
+    exit(1)
+
+try:
+    workspace_name = s.decode("utf8").strip('\n')
+except Exception as e:
+    os.system(f"notify-send \"failed to parse workspace_name {e}\"")
+    exit(1)
+
+print(workspace_name)
+
+try:
+    s = subprocess.check_output(["hyprctl", "dispatch", "togglespecialworkspace", f"{workspace_name}"], stderr=stderr)
+except Exception as e:
+    os.system(f"notify-send \"failed to add hyprctl special workspace {e}\"")
+    exit(1)
+print(s)
+
