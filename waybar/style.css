@@ -171,6 +171,16 @@ font-size:12px;
 }
 
 /*
+#tray widget window menu * {
+font-size: 14px;
+}
+*/
+
+#waybar * {
+font-size: 12px;
+}
+
+/*
 #custom-launcher {
   font-size: 24px;
   margin-top: 6px;

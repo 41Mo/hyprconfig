@@ -49,14 +49,16 @@
       "format": "{: %I:%M %p}"
   },
   "cpu": {
-      "interval": 15,
+      "interval": 1,
       "format": " {}%",
-      "max-length": 10
+      "max-length": 10,
+      "tooltip": false,
   },
   "memory": {
       "interval": 30,
       "format": " {}%",
-      "max-length": 10
+      "max-length": 10,
+      "tooltip": false,
   },
   "workspaces/workspaces": {
       "on-click":"hyprctl dispatch workspace +1"
