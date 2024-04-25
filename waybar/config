@@ -46,7 +46,7 @@
 		"spacing": 10
 	},
   "clock": {
-      "format": "{: %I:%M %p}"
+      "format": " {:%H:%M}",
   },
   "cpu": {
       "interval": 1,
