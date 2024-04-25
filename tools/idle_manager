@@ -1,0 +1,78 @@
+#!/bin/python
+import psutil
+import subprocess
+import os
+from threading import Thread
+
+def idle_thread():
+    try:
+        subprocess.check_output("swayidle -w timeout 1800 'swaylock -f' timeout 1920 'hyprctl dispatch dpms off'", shell=True)
+    except Exception as e:
+        os.system(f"notify-send \"failed to create thread for {choosen_opt[0]} {e}\"")
+
+progs = ["swayidle"]
+wofi_opts = ""
+for i in progs:
+    wofi_opts += i+" start\n"
+    wofi_opts += i+" stop\n"
+
+try:
+    stderr = open("/dev/null", "w")
+except Exception as e:
+    os.system(f"notify-send \"failed to open stderr\" {e}")
+    exit(1)
+
+try:
+    s = subprocess.check_output(["wofi", "--dmenu"], stderr=stderr, input=wofi_opts.encode('utf-8'))
+except Exception as e:
+    os.system(f"notify-send \"failed to get wofi workspace name {e}\"")
+    exit(1)
+
+try:
+    choosen_opt = s.decode("utf-8").strip('\n')
+except Exception as e:
+    os.system(f"notify-send \"failed to parse opt {e}\"")
+    exit(1)
+
+choosen_opt = choosen_opt.split(" ")
+
+proc_found = False
+proc_pid = ()
+for proc in psutil.process_iter():
+    try:
+        if proc.name().find(choosen_opt[0]) != -1:
+            if proc_found:
+                os.system(f"notify-send \"Err: multiple procs found\"")
+                exit(1)
+            proc_pid = proc.pid
+            proc_found = True
+    except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+        pass
+
+if choosen_opt[1] == "start":
+    if not proc_found:
+        try:
+            producer_thread = Thread(
+                target=idle_thread,
+            )
+            producer_thread.start()
+            print("thread start")
+        except Exception as e:
+            os.system(f"notify-send \"failed to create thread for {choosen_opt[0]} {e}\"")
+            exit(1)
+    else:
+        os.system(f"notify-send \"{choosen_opt[0]} already running\"")
+elif choosen_opt[1] == "stop":
+    if proc_found:
+        try:
+            subprocess.check_output(["kill", "-9", str(proc_pid)], stderr=stderr)
+        except Exception as e:
+            os.system(f"notify-send \"failed to kill proc {e}\"")
+            exit(1)
+    else:
+        os.system(f"notify-send \"no procs found to stop\"")
+        exit(1)
+else:
+    os.system(f"notify-send \"unknown command {choosen_opt[1]}\"")
+    exit(1)
+
