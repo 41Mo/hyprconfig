@@ -2,7 +2,7 @@
 	"layer": "top",
 	"modules-left": ["cpu","memory","tray"],
 	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["backlight","pulseaudio","network","battery","clock",],
+	"modules-right": ["custom/pacupd","backlight","pulseaudio","network","battery","clock",],
 	
 	"pulseaudio": {
 		"tooltip": false,
@@ -59,6 +59,11 @@
       "format": " {}%",
       "max-length": 10,
       "tooltip": false,
+  },
+  "custom/pacupd": {
+      "format" : "🔽 {}p",
+      "exec": "yay -Syup --repo --print-format | wc -l",
+      "interval": 3600,
   },
   "workspaces/workspaces": {
       "on-click":"hyprctl dispatch workspace +1"

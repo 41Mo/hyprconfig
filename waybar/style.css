@@ -69,6 +69,16 @@ font-size:12px;
   background: #bd93f9;
 }
 
+#custom-pacupd{
+  font-size: 12px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+  color: #161320;
+  background: #b5e8e0;
+}
+
 #pulseaudio {
   font-size: 12px;
   margin-left: 8px;
