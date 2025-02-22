@@ -2,7 +2,7 @@
 	"layer": "top",
 	"modules-left": ["cpu","memory","tray"],
 	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["custom/pacupd","backlight","pulseaudio","network","battery","clock",],
+	"modules-right": ["custom/proxy","custom/tlp","backlight","pulseaudio","network","battery","clock",],
 	
 	"pulseaudio": {
 		"tooltip": false,
@@ -61,9 +61,24 @@
       "tooltip": false,
   },
   "custom/pacupd": {
-      "format" : "🔽 {}p",
-      "exec": "yay -Syup --repo --print-format | wc -l",
+      "format" : "  {}",
+      "exec": "pkexec yay -Syup --repo --print-format | wc -l",
       "interval": 3600,
+  },
+  "custom/tlp": {
+      "format" : "{}",
+      "exec": "tlp_status.py",
+		  "on-click": "tlp_status.py --switch",
+      "interval": "once",
+      "signal": 2
+  },
+
+  "custom/proxy": {
+      "format" : "{}",
+      "exec": "pkexec system_proxy.py",
+      "interval": "once",
+      "on-click": "pkexec system_proxy.py --switch",
+      "signal": 1
   },
   "workspaces/workspaces": {
       "on-click":"hyprctl dispatch workspace +1"

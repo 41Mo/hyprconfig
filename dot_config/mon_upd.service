@@ -1,0 +1,10 @@
+[Unit]
+Description=Monitors Daemon
+
+[Service]
+ExecStart=/usr/bin/python /home/alex/code_and_everything/hyprconfig/tools/monitors.py
+Restart=always
+WorkingDirectory=/home/alex/code_and_everything/hyprconfig
+
+[Install]
+WantedBy=default.target

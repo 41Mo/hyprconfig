@@ -1,0 +1,35 @@
+[$Version]
+update_info=filepicker.upd:filepicker-remove-old-previews-entry
+
+[Colors:View]
+BackgroundNormal=#302F2E
+
+[General]
+TerminalApplication=alacritty -e tmux new
+
+[KDE]
+ShowDeleteCommand=false
+
+[KFileDialog Settings]
+Allow Expansion=false
+Automatically select filename extension=true
+Breadcrumb Navigation=false
+Decoration position=0
+LocationCombo Completionmode=5
+PathCombo Completionmode=5
+Show Bookmarks=false
+Show Full Path=false
+Show Inline Previews=true
+Show Preview=false
+Show Speedbar=true
+Show hidden files=false
+Sort by=Name
+Sort directories first=true
+Sort hidden files last=false
+Sort reversed=false
+Speedbar Width=229
+View Style=Detail
+
+[PreviewSettings]
+EnableRemoteFolderThumbnail=false
+MaximumRemoteSize=0
